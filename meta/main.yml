@@ -1,0 +1,23 @@
+---
+dependencies: []
+
+galaxy_info:
+  namespace: dubas
+  role_name: docker
+  author: Arkadiy Asuratov
+  description: Ansible role to install and configure Docker.
+  company: dubas s.c.
+  license: MIT
+  min_ansible_version: '2.13'
+
+  platforms:
+    - name: Debian
+      versions:
+        - bullseye
+        - bookworm
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
+
+  galaxy_tags: []

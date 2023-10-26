@@ -1,0 +1,51 @@
+---
+
+# Docker version to install.
+# For Debian/Ubuntu, you can list the available versions with: apt-cache madison docker-ce | awk '{print $3}'
+docker_version: latest
+
+# List of packages to uninstall before installing Docker.
+# Overrides the default list 'docker_packages_absent_default' in 'vars/'.
+# docker_packages_absent: []
+
+# List of packages to install.
+# Overrides the default list 'docker_packages_default' in 'vars/'.
+# docker_packages: []
+
+# Users to add to a 'docker' group.
+docker_users: []
+
+# Docker daemon configuration options as a dictionary.
+# See https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file
+docker_daemon_options: {}
+
+# Set to 'true' to disabe daemon management by this role.
+docker_daemon_management_disabled: false
+
+# Set to 'true' to disable service management by this role.
+docker_service_management_disabled: false
+
+# Set the desired state of the docker service.
+# Options: 'started', 'stopped', 'restarted', 'reloaded'.
+docker_service_state: started
+
+# Set to 'false' to disable the docker service at boot.
+docker_service_enabled: true
+
+# Docker repository URL.
+docker_repository: https://download.docker.com/linux
+
+# Map ansible_architecture to Docker architecture.
+docker_architecture_mapping:
+  aarch64: arm64
+  armv7l: armhf
+  x86_64: amd64
+
+# Map ansible_distribution to Docker distribution.
+docker_distribution_mapping:
+  Linux Mint: Ubuntu
+  elementary OS: Ubuntu
+  Pop!_OS: Ubuntu
+
+# Determine the Docker architecture.
+docker_ansible_distribution: '{{ docker_distribution_mapping[ansible_distribution] | default(ansible_distribution) }}'

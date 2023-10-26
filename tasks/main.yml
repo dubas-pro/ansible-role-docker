@@ -1,0 +1,56 @@
+---
+# ------------------------------------------------------------------------------
+# Gather facts
+# ------------------------------------------------------------------------------
+- name: Gather required OS facts
+  ansible.builtin.setup:
+    filter:
+      - ansible_os_family
+      - ansible_distribution
+      - ansible_distribution_release
+      - ansible_architecture
+
+# ------------------------------------------------------------------------------
+# Check requirements
+# ------------------------------------------------------------------------------
+- name: Fail task if unsupported OS family
+  ansible.builtin.fail:
+    msg: '{{ ansible_os_family }} is not supported by this role!'
+  when: ansible_os_family not in 'Debian'  # TODO: Add support for other OS families
+
+# ------------------------------------------------------------------------------
+# Define variables
+# ------------------------------------------------------------------------------
+- name: Include OS-family-specific variables
+  ansible.builtin.include_vars: os-family/{{ ansible_os_family | lower }}.yml
+
+- name: Include OS-distribution-specific variables
+  ansible.builtin.include_vars: os-distro/{{ docker_ansible_distribution | lower }}.yml
+
+# ------------------------------------------------------------------------------
+# Include tasks
+# ------------------------------------------------------------------------------
+- name: Include OS-family-specific tasks
+  ansible.builtin.include_tasks: os-family/{{ ansible_os_family | lower }}.yml
+
+# ------------------------------------------------------------------------------
+# Configure Docker
+# ------------------------------------------------------------------------------
+- name: Include user configuration tasks
+  ansible.builtin.include_tasks: configure/users.yml
+  when: docker_users | length > 0
+
+- name: Include daemon configuration tasks
+  ansible.builtin.include_tasks: configure/daemon.yml
+  when: not docker_daemon_management_disabled | bool
+
+- name: Manage Docker service
+  ignore_errors: '{{ ansible_check_mode }}'
+  ansible.builtin.service:
+    name: docker
+    state: '{{ docker_service_state }}'
+    enabled: '{{ docker_service_enabled }}'
+  when: not docker_service_management_disabled | bool
+
+- name: Ensure handlers are notified now to avoid firewall conflicts
+  ansible.builtin.meta: flush_handlers

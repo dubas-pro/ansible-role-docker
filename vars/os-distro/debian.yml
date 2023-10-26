@@ -1,0 +1,11 @@
+---
+
+# Uninstall conflicting packages
+# https://docs.docker.com/engine/install/debian/#uninstall-old-versions
+docker_packages_absent_default:
+  - containerd
+  - docker-compose
+  - docker-doc
+  - docker.io
+  - podman-docker
+  - runc

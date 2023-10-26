@@ -1,0 +1,6 @@
+---
+- name: Restart Docker
+  ansible.builtin.systemd:
+    name: docker
+    state: restarted
+  when: not docker_service_management_disabled | bool

@@ -1,0 +1,12 @@
+---
+
+# Uninstall conflicting packages
+# https://docs.docker.com/engine/install/ubuntu/#uninstall-old-versions
+docker_packages_absent_default:
+  - docker.io
+  - docker-doc
+  - docker-compose
+  - docker-compose-v2
+  - podman-docker
+  - containerd
+  - runc

@@ -1,0 +1,37 @@
+---
+
+################################################################################
+# DEBIAN / UBUNTU BASED SPECIFIC DEFAULTS
+################################################################################
+
+# Dependencies
+docker_apt_dependencies:
+  - ca-certificates
+  - curl
+  - gnupg
+  - lsb-release  # For detecting ansible distribution release
+
+# Keyring URL
+docker_apt_key_url: '{{ docker_repository }}/{{ docker_ansible_distribution | lower }}/gpg'
+
+# Keyring directory
+docker_apt_key_directory: /etc/apt/keyrings
+
+# Keyring file name
+docker_apt_key_file: docker.gpg
+
+# Repository channel
+# Options: stable, nightly, test
+docker_apt_repository_channel: stable
+
+# Repository architecture
+docker_apt_repository_arch: '{{ docker_architecture_mapping[ansible_architecture] | default(ansible_architecture) }}'
+
+# Repository URL
+docker_apt_repository: >-
+  deb [arch={{ docker_apt_repository_arch }} signed-by={{ docker_apt_key_directory }}/{{ docker_apt_key_file }}]
+  {{ docker_repository }}/{{ docker_ansible_distribution | lower }}
+  {{ ansible_distribution_release }} {{ docker_apt_repository_channel }}
+
+# Repository file name
+docker_apt_repository_file: docker

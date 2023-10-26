@@ -1,0 +1,36 @@
+---
+- name: Ensure previous docker packages are absent
+  ansible.builtin.package:
+    name: '{{ docker_packages_absent | default(docker_packages_absent_default) }}'
+    state: absent
+
+- name: Ensure dependencies are present
+  ansible.builtin.apt:
+    name: '{{ docker_apt_dependencies }}'
+    state: present
+    update_cache: true
+
+- name: Ensure keyrings directory exists
+  ansible.builtin.file:
+    path: '{{ docker_apt_key_directory }}'
+    state: directory
+    mode: 0755
+
+- name: Ensure Docker GPG key is present
+  ansible.builtin.apt_key:
+    url: '{{ docker_apt_key_url }}'
+    keyring: '{{ docker_apt_key_directory }}/{{ docker_apt_key_file }}'
+    state: present
+
+- name: Ensure Docker repository is configured
+  ansible.builtin.apt_repository:
+    repo: '{{ docker_apt_repository }}'
+    filename: '{{ docker_apt_repository_file }}'
+    state: present
+    update_cache: true
+
+- name: Ensure docker packages are present
+  ansible.builtin.apt:
+    name: '{{ docker_packages | default(docker_packages_default) }}'
+    state: present
+    update_cache: true

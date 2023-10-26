@@ -182,7 +182,7 @@ Create a `requirements.yml` file in your project:
 roles:
   - name: dubas.docker
     src: https://github.com/dubas-pro/ansible-role-docker.git
-    version: 0.0.0
+    version: 1.0.0
 ```
 
 Install the role:

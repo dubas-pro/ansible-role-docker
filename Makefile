@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-export ANSIBLE_COLLECTIONS_PATHS := $(shell pwd)/vendor/collections
+export ANSIBLE_COLLECTIONS_PATH := $(shell pwd)/vendor/collections
 export ANSIBLE_ROLES_PATH := $(shell pwd)/vendor/roles
 
 .PHONY: venv

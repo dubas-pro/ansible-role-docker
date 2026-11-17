@@ -22,7 +22,7 @@ repos:
       - id: ansible-lint
         name: ansible-lint
         entry: >-
-          env ANSIBLE_COLLECTIONS_PATHS=vendor/collections
+          env ANSIBLE_COLLECTIONS_PATH=vendor/collections
           env ANSIBLE_ROLES_PATH=vendor/roles
           ansible-lint --config-file .ansible-lint
         pass_filenames: false

@@ -9,7 +9,6 @@ docker_apt_dependencies:
   - ca-certificates
   - curl
   - gnupg
-  - lsb-release  # For detecting ansible distribution release
 
 # Keyring URL
 docker_apt_key_url: '{{ docker_repository }}/{{ docker_ansible_distribution | lower }}/gpg'

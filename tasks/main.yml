@@ -16,7 +16,7 @@
 - name: Fail task if unsupported OS family
   ansible.builtin.fail:
     msg: '{{ ansible_os_family }} is not supported by this role!'
-  when: ansible_os_family not in 'Debian'  # TODO: Add support for other OS families
+  when: ansible_os_family != 'Debian'
 
 # ------------------------------------------------------------------------------
 # Define variables

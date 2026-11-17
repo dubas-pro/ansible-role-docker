@@ -28,9 +28,9 @@ Supported Platforms
 -------------------
 
 - Debian
-  - bullseye, bookworm
+  - bookworm
 - Ubuntu
-  - focal, jammy
+  - jammy
 
 Role Variables
 --------------
@@ -158,7 +158,7 @@ Variables with a suffix `_default` are defined in `vars` and should not be chang
   - Default: `deb [arch={{ docker_apt_repository_arch }} signed-by={{ docker_apt_key_directory }}/{{ docker_apt_key_file }}] {{ docker_repository }}/{{ docker_ansible_distribution | lower }} {{ ansible_distribution_release }} {{ docker_apt_repository_channel }}`
   - Description: Docker repository to use, you can override this to use a different trusted repository.
   - Type: `string`
-  - Example: `deb [arch=arm64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu focal stable`
+  - Example: `deb [arch=arm64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu jammy stable`
 - `docker_apt_repository_file`
   - Default: `docker`
   - Description: Filename of the Docker repository as listed in the Docker Engine installation instructions.

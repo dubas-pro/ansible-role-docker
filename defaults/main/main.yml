@@ -19,7 +19,7 @@ docker_users: []
 # See https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file
 docker_daemon_options: {}
 
-# Set to 'true' to disabe daemon management by this role.
+# Set to 'true' to disable daemon management by this role.
 docker_daemon_management_disabled: false
 
 # Set to 'true' to disable service management by this role.
@@ -45,5 +45,5 @@ docker_architecture_mapping:
 docker_distribution_mapping:
   Pop!_OS: Ubuntu
 
-# Determine the Docker architecture.
+# Docker distribution name (after applying docker_distribution_mapping).
 docker_ansible_distribution: '{{ docker_distribution_mapping[ansible_distribution] | default(ansible_distribution) }}'

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "pre-commit": {
+    "enabled": true
+  },
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "packageRules": [
+    {
+      "description": "One weekly PR for the Python dev tools in pyproject.toml / uv.lock",
+      "matchManagers": ["pep621"],
+      "groupName": "python dev tools",
+      "schedule": ["before 6am on monday"]
+    }
+  ]
+}

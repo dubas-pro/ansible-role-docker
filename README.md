@@ -125,7 +125,7 @@ Variables with a suffix `_default` are defined in `vars` and should not be chang
 --------------------------
 
 - `docker_apt_dependencies`
-  - Default: `['ca-certificates', 'curl', 'gnupg']`
+  - Default: `['ca-certificates', 'curl']`
   - Description: Dependencies listed in the Docker Engine installation instructions.
   - Type: `list`
   - Example: `['ca-certificates', 'curl', 'gnupg']`

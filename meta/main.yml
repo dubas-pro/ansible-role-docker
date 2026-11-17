@@ -7,7 +7,7 @@ galaxy_info:
   author: Arkadiy Asuratov
   description: Ansible role to install and configure Docker.
   company: dubas s.c.
-  license: MIT
+  license: EUPL-1.2
   min_ansible_version: '2.13'
 
   platforms:

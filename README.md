@@ -62,7 +62,7 @@ Variables with a suffix `_default` are defined in `vars` and should not be chang
   - Example: `['ansible']`
 - `docker_daemon_options`
   - Default: `{}`
-  - Description: Options to add to the Docker daemon configuration.
+  - Description: Full contents of `/etc/docker/daemon.json`. The file is replaced, not merged; with the default `{}` any existing options are removed. Set `docker_daemon_management_disabled: true` to leave the file alone.
   - Type: `dict`
   - Example:
 

@@ -8,11 +8,6 @@ dependency:
 driver:
   name: docker
 
-lint: |
-  set -e
-  yamllint .
-  ansible-lint
-
 platforms:
   - name: instance
     image: geerlingguy/docker-${MOLECULE_DISTRO:-ubuntu2204}-ansible:latest

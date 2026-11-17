@@ -1,6 +1,10 @@
 ---
 extends: default
 
+ignore: |
+  .venv/
+  vendor/
+
 rules:
   line-length:
     max: 200

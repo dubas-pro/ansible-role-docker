@@ -140,10 +140,10 @@ Variables with a suffix `_default` are defined in `vars` and should not be chang
   - Type: `string`
   - Example: `/usr/share/keyrings`
 - `docker_apt_key_file`
-  - Default: `docker.gpg`
-  - Description: Filename of the Docker GPG key as listed in the Docker Engine installation instructions.
+  - Default: `docker.asc`
+  - Description: Filename of the Docker GPG key as listed in the Docker Engine installation instructions. The key is stored ASCII-armored, so keep the `.asc` extension or apt will reject it.
   - Type: `string`
-  - Example: `docker-archive-keyring.gpg`
+  - Example: `docker-archive-keyring.asc`
 - `docker_apt_repository_channel`
   - Default: `stable`
   - Description: Channel of the Docker repository to use.

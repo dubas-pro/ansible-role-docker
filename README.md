@@ -42,7 +42,7 @@ Variables with a suffix `_default` are defined in `vars` and should not be chang
 
 - `docker_version`
   - Default: `latest`
-  - Description: Docker version to install. Does not apply when `docker_packages_default` is overridden, so you will need to set this manually per package.
+  - Description: Docker version to install. Does not apply when `docker_packages` is set, so you will need to set this manually per package.
   - Type: `string`
   - Example: `5:24.0.6-1~ubuntu.22.04~jammy`
 - `docker_packages_absent`

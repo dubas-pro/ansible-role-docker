@@ -16,15 +16,15 @@ repos:
       - id: yamlfix
         exclude: ^.github/
 
-  - repo: https://github.com/ansible/ansible-lint
-    rev: v6.20.3
+  - repo: local
     hooks:
       - id: ansible-lint
         name: ansible-lint
         entry: >-
           env ANSIBLE_COLLECTIONS_PATH=vendor/collections
           env ANSIBLE_ROLES_PATH=vendor/roles
-          ansible-lint --config-file .ansible-lint
+          uv run ansible-lint --config-file .ansible-lint
+        language: system
         pass_filenames: false
         files: \.(yaml|yml)$
         args:

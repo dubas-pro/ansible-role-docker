@@ -115,8 +115,6 @@ Variables with a suffix `_default` are defined in `vars` and should not be chang
 
     ```yaml
     docker_distribution_mapping:
-      Linux Mint: Ubuntu
-      elementary OS: Ubuntu
       Pop!_OS: Ubuntu
     ```
 

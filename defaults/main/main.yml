@@ -43,8 +43,6 @@ docker_architecture_mapping:
 
 # Map ansible_distribution to Docker distribution.
 docker_distribution_mapping:
-  Linux Mint: Ubuntu
-  elementary OS: Ubuntu
   Pop!_OS: Ubuntu
 
 # Determine the Docker architecture.

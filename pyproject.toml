@@ -1,0 +1,23 @@
+[project]
+name = "ansible-role-docker"
+version = "0.0.0"
+description = "Development tooling for the dubas.docker Ansible role."
+requires-python = ">=3.11,<3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+  "ansible==8.5.0",
+  "ansible-lint==6.21.1",
+  "bump2version==1.0.1",
+  "molecule==6.0.2",
+  "molecule-plugins[docker]==23.5.0",
+  "pre-commit==3.5.0",
+  "yamlfix==1.15.0",
+  "yamllint==1.32.0",
+]
+
+[tool.uv]
+package = false
+# ansible-lint does not support Windows; only lock for Linux and macOS.
+environments = ["sys_platform == 'linux'", "sys_platform == 'darwin'"]
